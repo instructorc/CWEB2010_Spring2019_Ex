@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -373,7 +374,67 @@ namespace mpls_renters_desktop
             var selectedProperty = propGrid.SelectedIndex;
             Apartment anApartment = ((Apartment)propGrid.Items[selectedProperty]);
             name_txtbox.Text = anApartment.apartment_Name;
-            MessageBox.Show(anApartment.apartment_Name);
+            foor_txtbox.Text = anApartment.floor_count.ToString();
+            lat_txtbox.Text = anApartment.latitude.ToString();
+            long_txtbox.Text = anApartment.longitude.ToString();
+            email_txtbox.Text = anApartment.contact_email;
+            phone_txtbox.Text = anApartment.phone;
+            address_txtbox.Text = anApartment.address;
+            city_txtbox.Text = anApartment.city;
+            zip_txtbox.Text = anApartment.zip.ToString();
+            cityregion_txtbox.Text = anApartment.city_region;
+            facebook_txtbox.Text = anApartment.facebook_url;
+            gram_txtbox.Text = anApartment.instagram_url;
+            tour_txtbox.Text = anApartment.tour_schedule_url;
+            skybox_txtbox.IsChecked = anApartment.skyway_connected;
+            shortdesc_txtbox.Text = anApartment.short_description;
+            longdesc_txtbox.Text = anApartment.long_description;
+
+
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            if (propGrid.SelectedItem != null)
+            {
+                Apartment selectedApt = (Apartment)propGrid.SelectedItem;
+                selectedApt.apartment_Name = name_txtbox.Text;
+                selectedApt.floor_count = Int32.Parse(foor_txtbox.Text);
+                selectedApt.latitude = Double.Parse(lat_txtbox.Text);
+                selectedApt.longitude = Double.Parse(long_txtbox.Text);
+                selectedApt.contact_email = email_txtbox.Text;
+                selectedApt.phone = phone_txtbox.Text;
+                selectedApt.address = address_txtbox.Text;
+                selectedApt.city = city_txtbox.Text;
+                selectedApt.zip = Int32.Parse(zip_txtbox.Text);
+                selectedApt.city_region = cityregion_txtbox.Text;
+                selectedApt.facebook_url = facebook_txtbox.Text;
+                selectedApt.instagram_url = gram_txtbox.Text;
+                selectedApt.tour_schedule_url = tour_txtbox.Text;
+                selectedApt.skyway_connected = (bool)skybox_txtbox.IsChecked;
+                selectedApt.short_description = shortdesc_txtbox.Text;
+                selectedApt.long_description = longdesc_txtbox.Text;
+
+                propGrid.Items.Refresh();
+            }
+           
+            
+            
+
+
+
+
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (propGrid.SelectedItem != null)
+            {
+                propGrid.Items.Remove((Apartment)propGrid.SelectedItem);
+            }
         }
     }
 }

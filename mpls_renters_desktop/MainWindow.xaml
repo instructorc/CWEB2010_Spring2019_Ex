@@ -26,9 +26,9 @@
         <Button Content="EXIT" Foreground="#111111" Background="white" HorizontalAlignment="Left" Margin="288,14,0,0" VerticalAlignment="Top" Width="119" Height="42" Click="Button_Click" Grid.Column="2"/>
         <Image HorizontalAlignment="Left" Source="images/logo.png" Grid.Column="0" Grid.Row="0" Height="52" Margin="26,4,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="-0.335,1.736" Grid.ColumnSpan="2"/>
         <TabControl HorizontalAlignment="Left" Height="280" Margin="26,82,0,0" VerticalAlignment="Top" Width="945" Grid.RowSpan="3" Grid.ColumnSpan="3" SelectionChanged="TabControl_SelectionChanged">
-           
+
             <TabItem Header="Properties"  Height="35"  >
-                <DataGrid Name="propGrid" SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding Path=Apartment}" SelectedItem="{Binding Path=SelectedApartments, Mode=TwoWay}" FontSize="12" Margin="0,0,0,0.6" SelectionChanged="PropGrid_SelectionChanged">
+                <DataGrid Name="propGrid" SelectionMode="Single" AutoGenerateColumns="False"  ItemsSource="{Binding Path=Apartment}" SelectedItem="{Binding Path=SelectedApartments, Mode=TwoWay}" FontSize="12" Margin="0,0,0,0.6" SelectionChanged="PropGrid_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding property_id}" Header="Property ID" />
                         <DataGridTextColumn x:Name="dataColumn_name" Binding="{Binding apartment_Name}" Header="Apartment Name" />
@@ -60,30 +60,62 @@
 
 
         </TabControl>
+
         <Button Content="Search" Name="search_btn" Grid.Column="2"  HorizontalAlignment="Left" Margin="288,82,0,0" VerticalAlignment="Top" Width="119" Grid.RowSpan="2" Height="36"/>
         <TextBox Name="search_txtbox" Grid.Column="2" HorizontalAlignment="Left" FontSize="20" Height="36" Margin="46,82,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="241" Grid.RowSpan="2" TextChanged="TextBox_TextChanged"/>
 
         <Grid Height="221" Grid.ColumnSpan="2" Margin="26,175.2,197,38.2" Grid.Row="2" RenderTransformOrigin="0.425,0.465">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="97*"/>
-           
+
                 <ColumnDefinition Width="159*"/>
             </Grid.ColumnDefinitions>
             <StackPanel HorizontalAlignment="Left" Height="221" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="2">
-                <Label Content="Property Name:"/>
-                <Label Content="Floor Count"/>
-                <Label Content="Latitude:"/>
-                <Label Content="Longitude"/>
-                <Label Content="Contact Email:"/>
-                <Label Content="Phone"/>
+                <Label Content="Property Name:" Height="28" Margin="0,0,0.2,0"/>
+                <Label Content="Floor Count" Height="24" Margin="0,0,0.2,0"/>
+                <Label Content="Latitude:" Height="23" Margin="0,0,0.2,0"/>
+                <Label Content="Longitude" Height="23" Margin="0,0,0.2,0"/>
+                <Label Content="Contact Email:" Height="24" Margin="0,0,0.2,0"/>
+                <Label Content="Phone" Height="25" Margin="0,0,0.2,0"/>
                 <Label Content="Address:"/>
                 <Label Content="City"/>
             </StackPanel>
             <StackPanel Height="221" Margin="3,0,9.8,0" VerticalAlignment="Top" Grid.Column="2">
-                <TextBox Height="23" Name="name_txtbox"  Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" TextWrapping="Wrap" />
+                <TextBox Height="28" Name="name_txtbox"  Text= "{Binding propGrid.selectedIndex, Mode = TwoWay}" TextWrapping="Wrap" BorderThickness="0, 0, 0, 1" Margin="0,0,0.2,0" />
+                <TextBox Height="23" Name="foor_txtbox"  Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" TextWrapping="Wrap" BorderThickness="0, 0, 0, 1"  Margin="0,0,0.2,0"/>
+                <TextBox Height="23" Name="lat_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" />
+                <TextBox Height="24" Name="long_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,0.2,0"/>
+                <TextBox Height="24" Name="email_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,0.2,0"/>
+                <TextBox Height="26" Name="phone_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,0.2,0"/>
+                <TextBox Height="26" Name="address_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode=OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,0.2,0"/>
+                <TextBox Height="26" Name="city_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode=OneWay}" BorderThickness="0, 0, 0, 1"  Margin="0,0,0.2,0"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Height="221" VerticalAlignment="Top" Width="115" Grid.Column="1" Margin="222.2,0,-125.2,0">
+                <Label Content="Zip:" Height="28" Margin="0,0,0.2,0"/>
+                <Label Content="City Region" Height="24" Margin="0,0,0.2,0"/>
+                <Label Content="Facebook URL:" Height="23" Margin="0,0,0.2,0"/>
+                <Label Content="Instagram URL" Height="23" Margin="0,0,0.2,0"/>
+                <Label Content="Tour URL:" Height="24" Margin="0,0,0.2,0"/>
+                <Label Content="Skyway Connected?" Height="25" Margin="0,0,0.2,0"/>
+                <Label Content="Short Description" Height="33" Margin="0,0,0.2,0"/>
+                <Label Content="Long Description" Height="33" Margin="0,0,0.2,0" RenderTransformOrigin="0.5,0.998"/>
+            </StackPanel>
+            <StackPanel Height="221" Margin="342.2,0,-380.2,0" VerticalAlignment="Top" Grid.Column="1">
+                <TextBox Height="28" Name="zip_txtbox"  Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" TextWrapping="Wrap" BorderThickness="0, 0, 0, 1" Margin="0,0,-49.8,0" />
+                <TextBox Height="23" Name="cityregion_txtbox"  Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" TextWrapping="Wrap" BorderThickness="0, 0, 0, 1"  Margin="0,0,-49.8,0"/>
+                <TextBox Height="23" Name="facebook_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,-49.8,0" />
+                <TextBox Height="24" Name="gram_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,-49.8,0"/>
+                <TextBox Height="24" Name="tour_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,-49.8,0"/>
+                <CheckBox Height="26" Name="skybox_txtbox"  IsChecked= "{Binding propGrid.selectedIndex, Mode = OneWay}" BorderThickness="0, 0, 0, 1" Margin="0,0,0.2,0"/>
+                <TextBlock Height="37" Name="shortdesc_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode=TwoWay}"  Margin="0,0,-90.8,0"/>
+                <TextBlock Height="53" Name="longdesc_txtbox" TextWrapping="Wrap" Text= "{Binding propGrid.selectedIndex, Mode=OneWay}"   Margin="0,0,-90.8,0"/>
             </StackPanel>
 
 
         </Grid>
+        <Button Content="UPDATE" Grid.Column="2" HorizontalAlignment="Left" Margin="304,175.2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="103" Height="32" Click="Button_Click_1"/>
+        <Button Content="DELETE" Grid.Column="2" HorizontalAlignment="Left" Margin="304,225.2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="103" Height="36" Click="Delete_Click"/>
+        <Button Content="ADD" Grid.Column="2" HorizontalAlignment="Left" Margin="304,279.2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="103" Height="37"/>
+        <Button Content="CLEAR" Grid.Column="2" HorizontalAlignment="Left" Margin="304,334.2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="103" Height="37"/>
     </Grid>
 </Window>

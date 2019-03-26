@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using mpls_renters_desktop.Models;
 
 namespace mpls_renters_desktop
 {
@@ -13,5 +14,6 @@ namespace mpls_renters_desktop
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
